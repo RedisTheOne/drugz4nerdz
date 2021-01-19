@@ -1,0 +1,73 @@
+﻿<Window x:Class="Products4Nerdz.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Products4Nerdz"
+        mc:Ignorable="d"
+        Title="Products4Nerdz" Height="500" Width="850" MinHeight="500" MaxHeight="500">
+    <Grid>
+        <Grid Name="HomeContainer">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="240" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Background="#3e3e3e" Grid.Column="0">
+                <TextBlock Foreground="White" FontSize="25" TextAlignment="Center" Name="SidebarTitle" Padding="0 20 0 20">Products4Nerdz</TextBlock>
+                <Button Background="#3700b3" Click="ProductsSidebarButton_Click" Name="ProductsSidebarButton" Height="50" Style="{StaticResource SidebarButton}" Cursor="Hand" FontSize="18" Foreground="White">Products</Button>
+                <Button Background="#3700b3" Click="ProductsReload_Click" Name="ProductsReload" Height="50" Style="{StaticResource SidebarButton}" Cursor="Hand" FontSize="18" Foreground="White">Reload</Button>
+                <Button Visibility="Collapsed" Name="AddProductSidebarButton" Height="50" Style="{StaticResource SidebarButton}" Cursor="Hand" FontSize="18" Background="#3700b3" Foreground="White" Click="AddProductSidebarButton_Click">Add product</Button>
+                <Button Name="SignOutSidebarButton" Height="50" Style="{StaticResource SidebarButton}" Cursor="Hand" FontSize="18" Background="#3700b3" Foreground="White" Click="SignOutSidebarButton_Click">Sign In</Button>
+            </StackPanel>
+            <Grid Grid.Column="1" Background="#3e3e3e3e" Name="ProductsSection">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" FontSize="25" Padding="20" Name="TitleText">Loading...</TextBlock>
+                <ListBox Grid.Row="1" Padding="6" ItemContainerStyle="{StaticResource ListBoxItem}" Background="#3e3e3e" Foreground="White"  Margin="20 0 20 20" Name="ProductsListBox" SelectionChanged="ProductsListBox_SelectionChanged"></ListBox>
+            </Grid>
+            <StackPanel Name="ProductSection" Visibility="Collapsed" Grid.Column="1" Background="white">
+                <TextBlock TextAlignment="Center" Padding="20" FontSize="25" Background="#121212" Foreground="White" Name="TitleProductSection"></TextBlock>
+                <FlowDocumentScrollViewer Height="300">
+                    <FlowDocument>
+                        <Paragraph FontFamily="Arial" Name="DescriptionProductSection" Padding="10" FontSize="18"></Paragraph>
+                    </FlowDocument>
+                </FlowDocumentScrollViewer>
+                <Button Style="{StaticResource MailButton}" Width="120" Cursor="Hand" HorizontalAlignment="Left" FontSize="18" Height="35" Background="#3e3e3e" Foreground="White" Margin="20 20 0 0" Name="SendMailButton" Click="SendMailButton_Click">Send Mail</Button>
+            </StackPanel>
+        </Grid>
+        <Grid Background="#3e3e3e3e" Visibility="Collapsed" Name="SignInContainer">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Style="{StaticResource SignInButton}" Background="#121212" Grid.Column="0" Name="LoginBarSigninButtpn" Click="LoginBarSigninButtpn_Click">Sign In</Button>
+                <Button Style="{StaticResource SignInButton}" Background="#3e3e3e" Grid.Column="1" Name="LoginBarSignupButton" Click="LoginBarSignupButton_Click">Sign Up</Button>
+                <Button Style="{StaticResource SignInButton}" Background="#3e3e3e" Grid.Column="2" Name="LoginBarHomeButton" Click="LoginBarHomeButton_Click">Home</Button>
+            </Grid>
+            <StackPanel VerticalAlignment="Center" Name="SignInSection" Grid.Row="1" Margin="20">
+                <TextBlock Margin="4" FontSize="20">Username:</TextBlock>
+                <TextBox Margin="4" Template="{StaticResource TextBoxBaseControlTemplate}" Name="SignInSectionUsername" Background="Transparent" Padding="4" FontSize="18"/>
+                <TextBlock Margin="4" FontSize="20">Password:</TextBlock>
+                <PasswordBox Margin="4" Template="{StaticResource PasswordBoxBaseControlTemplate}" Name="SignInSectionPassword" Background="Transparent" Padding="4" FontSize="18"/>
+                <Button Style="{StaticResource MailButton}" Foreground="White" FontSize="18" Height="35" Width="100" HorizontalAlignment="Left" Margin="4" Cursor="Hand" Background="#3e3e3e" Name="SignInSectionButton" Click="SignInSectionButton_Click">Sign In</Button>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Center" Name="SignUpSection" Visibility="Collapsed" Grid.Row="1" Margin="20">
+                <TextBlock Margin="4" FontSize="20">Username:</TextBlock>
+                <TextBox Name="SignUpSectionUsername" Margin="4" Template="{StaticResource TextBoxBaseControlTemplate}" Background="Transparent" Padding="4" FontSize="18"/>
+                <TextBlock Margin="4" FontSize="20">Email:</TextBlock>
+                <TextBox Name="SignUpSectionEmail" Margin="4" Template="{StaticResource TextBoxBaseControlTemplate}" Background="Transparent" Padding="4" FontSize="18"/>
+                <TextBlock Margin="4" FontSize="20">Password:</TextBlock>
+                <PasswordBox Name="SignUpSectionPassword" Margin="4" Template="{StaticResource PasswordBoxBaseControlTemplate}" Background="Transparent" Padding="4" FontSize="18"/>
+                <Button Style="{StaticResource MailButton}" Foreground="White" FontSize="18" Height="35" Width="100" HorizontalAlignment="Left" Margin="4" Cursor="Hand" Background="#3e3e3e"  Name="SignUpSectionButton" Click="SignUpSectionButton_Click">Sign Up</Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
